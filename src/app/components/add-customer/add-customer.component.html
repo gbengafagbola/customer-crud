@@ -7,7 +7,7 @@
 
 <!-- Form -->
 <div class="inner-wrapper">
-  <form [formGroup]="studentForm" (ngSubmit)="submitStudentForm()" #resetStudentForm="ngForm" novalidate>
+  <form [formGroup]="customerForm" (ngSubmit)="submitCustomerForm()" #resetStudentForm="ngForm" novalidate>
     <!-- Left block -->
     <mat-card>
       <div class="controlers-wrapper">
@@ -21,20 +21,40 @@
 
         <!-- Email -->
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Customer email" formControlName="student_email">
-          <mat-error *ngIf="handleError('student_email', 'required')">
+          <input matInput placeholder="Customer address" formControlName="customer_address">
+          <mat-error *ngIf="handleError('customer_address', 'required')">
             You must provide a<strong>Customer email</strong>
           </mat-error>
         </mat-form-field>
 
+
+        
+        <div class="example-container">
+          <mat-form-field hintLabel="Max 10 characters" appearance="fill" style="padding-right: 20px;">
+            <mat-label>house number</mat-label>
+            <input matInput #input maxlength="10" placeholder="house_number">
+            <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint>
+          </mat-form-field>
+        
+          <mat-form-field hintLabel="Max 10 characters" appearance="fill" style="padding-right: 20px;">
+            <mat-label>Street</mat-label>
+            <input matInput #input maxlength="10" placeholder="Postal Code">
+            <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint>
+          </mat-form-field>
+          
+        </div>
+        
         <!-- Section -->
-        <mat-form-field>
+        <!-- <mat-form-field>
           <mat-label>Section</mat-label>
           <mat-select formControlName="section">
             <mat-option>
             </mat-option>
           </mat-select>
-        </mat-form-field>
+          <mat-error *ngIf="handleError('section', 'required')">
+            Section is required
+          </mat-error>
+        </mat-form-field> -->
       </div>
     </mat-card>
 
@@ -42,21 +62,22 @@
     <mat-card>
       <div class="controlers-wrapper">
         <!-- Add subjects -->
-        <mat-form-field class="multiple-items">
-          <mat-chip-list #chipList>
-            <mat-chip *ngFor="let subjectArray of subjectArray" [selectable]="selectable" [removable]="removable"
-              (removed)="remove(subjectArray)">
-              {{subjectArray.name}}
-              <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-            </mat-chip>
-            <input placeholder="Add subject" [matChipInputFor]="chipList"
-              [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
-              (matChipInputTokenEnd)="add($event)">
-          </mat-chip-list>
-          <i class="material-icons tooltip-info" matTooltip="Enter subject name and press enter to add subjects">
-            info
-          </i>
-        </mat-form-field>
+        <div class="example-container">
+          <mat-form-field hintLabel="Max 10 characters" appearance="fill" style="padding-right: 20px;">
+            <mat-label>Enter some input</mat-label>
+            <input matInput #input maxlength="10" placeholder="Ex. Nougat">
+            <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint>
+          </mat-form-field>
+        
+          <mat-form-field appearance="fill">
+            <mat-label>Select me</mat-label>
+            <mat-select>
+              <mat-option value="option">Option</mat-option>
+            </mat-select>
+            <mat-hint align="end">Here's the dropdown arrow ^</mat-hint>
+          </mat-form-field>
+        </div>
+        
 
         <!-- Date of birth -->
         <mat-form-field>

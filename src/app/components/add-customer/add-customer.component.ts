@@ -22,9 +22,9 @@ export class AddCustomerComponent implements OnInit {
   removable = true;
   addOnBlur = true;
   @ViewChild('chipList', { static: true }) chipList;
-  @ViewChild('resetStudentForm', { static: true }) myNgForm;
+  @ViewChild('resetCustomerForm', { static: true }) myNgForm;
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
-  studentForm: FormGroup;
+  customerForm: FormGroup;
   subjectArray: Subject[] = [];
   SectioinArray: any = ['A', 'B', 'C', 'D', 'E'];
 
@@ -41,10 +41,9 @@ export class AddCustomerComponent implements OnInit {
 
   /* Reactive book form */
   submitBookForm() {
-    this.studentForm = this.fb.group({
+    this.customerForm = this.fb.group({
       student_name: ['', [Validators.required]],
-      student_email: ['', [Validators.required]],
-      section: ['', [Validators.required]],
+      customer_address: ['', [Validators.required]],
       subjects: [this.subjectArray],
       dob: ['', [Validators.required]],
       gender: ['Male']
@@ -76,20 +75,20 @@ export class AddCustomerComponent implements OnInit {
   /* Date */
   formatDate(e) {
     var convertDate = new Date(e.target.value).toISOString().substring(0, 10);
-    this.studentForm.get('dob').setValue(convertDate, {
+    this.customerForm.get('dob').setValue(convertDate, {
       onlyself: true
     })
   }  
 
   /* Get errors */
   public handleError = (controlName: string, errorName: string) => {
-    return this.studentForm.controls[controlName].hasError(errorName);
+    return this.customerForm.controls[controlName].hasError(errorName);
   }  
 
   /* Submit book */
-  submitStudentForm() {
-    if (this.studentForm.valid) {
-      this.studentApi.AddStudent(this.studentForm.value).subscribe(res => {
+  submitCustomerForm() {
+    if (this.customerForm.valid) {
+      this.studentApi.AddStudent(this.customerForm.value).subscribe(res => {
         this.ngZone.run(() => this.router.navigateByUrl('/students-list'))
       });
     }
