@@ -37,25 +37,13 @@
           </mat-form-field>
         
           <mat-form-field hintLabel="Max 10 characters" appearance="fill" style="padding-right: 20px;">
-            <mat-label>Street</mat-label>
-            <input matInput #input maxlength="10" placeholder="Postal Code">
+            <mat-label>Postal Code</mat-label>
+            <input matInput formControlName="postal_code" maxlength="10" placeholder="Postal Code">
             <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint>
           </mat-form-field>
           
-        </div>
-        
-        <!-- Section -->
-        <!-- <mat-form-field>
-          <mat-label>Section</mat-label>
-          <mat-select formControlName="section">
-            <mat-option>
-            </mat-option>
-          </mat-select>
-          <mat-error *ngIf="handleError('section', 'required')">
-            Section is required
-          </mat-error>
-        </mat-form-field> -->
-      </div>
+        </div>        
+     </div>
     </mat-card>
 
     <!-- Right block -->
@@ -64,15 +52,18 @@
         <!-- Add subjects -->
         <div class="example-container">
           <mat-form-field hintLabel="Max 10 characters" appearance="fill" style="padding-right: 20px;">
-            <mat-label>Enter some input</mat-label>
-            <input matInput #input maxlength="10" placeholder="Ex. Nougat">
+            <mat-label>order number</mat-label>
+            <input matInput formControlName="order_number" maxlength="10" placeholder="order number">
             <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint>
           </mat-form-field>
         
           <mat-form-field appearance="fill">
-            <mat-label>Select me</mat-label>
-            <mat-select>
-              <mat-option value="option">Option</mat-option>
+            <mat-label>order amount</mat-label>
+            <mat-select formControlName="order_amount">
+              <mat-option value="option1">1</mat-option>
+              <mat-option value="option2">2</mat-option>
+              <mat-option value="option3">3</mat-option>
+              <mat-option value="option4">4</mat-option>
             </mat-select>
             <mat-hint align="end">Here's the dropdown arrow ^</mat-hint>
           </mat-form-field>
