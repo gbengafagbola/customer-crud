@@ -1,64 +1,74 @@
+  
 <!-- Title group  -->
 <div class="title-group">
-  <h1 class="mat-h1">Add Student</h1>
+  <h1 class="mat-h1">Edit Customer</h1>
   <mat-divider fxFlex="1 0"></mat-divider>
 </div>
 
 <!-- Form -->
 <div class="inner-wrapper">
-  <form [formGroup]="studentForm" (ngSubmit)="updateStudentForm()" #resetStudentForm="ngForm" novalidate>
+  <form [formGroup]="customerForm" (ngSubmit)="submitCustomerForm()" #resetStudentForm="ngForm" novalidate>
     <!-- Left block -->
     <mat-card>
       <div class="controlers-wrapper">
         <!-- Name -->
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Student name" formControlName="student_name">
+          <input matInput placeholder="Customer name" formControlName="student_name">
           <mat-error *ngIf="handleError('student_name', 'required')">
-            You must provide a<strong>student name</strong>
+            You must provide a<strong>Customer name</strong>
           </mat-error>
         </mat-form-field>
 
         <!-- Email -->
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Student email" formControlName="student_email">
-          <mat-error *ngIf="handleError('student_email', 'required')">
-            You must provide a<strong>student email</strong>
+          <input matInput placeholder="Customer address" formControlName="customer_address">
+          <mat-error *ngIf="handleError('customer_address', 'required')">
+            You must provide a<strong>Customer email</strong>
           </mat-error>
         </mat-form-field>
 
-        <!-- Section -->
-        <mat-form-field>
-          <mat-label>Section</mat-label>
-          <!-- <mat-select [(value)]="selected" formControlName="section">
-            <mat-option [value]="sectioinArray" *ngFor="let sectioinArray of SectioinArray">{{sectioinArray}}
-            </mat-option>
-          </mat-select> -->
-          <mat-error *ngIf="handleError('section', 'required')">
-            Section is required
-          </mat-error>
-        </mat-form-field>
-      </div>
+
+        
+        <div class="example-container">
+          <mat-form-field hintLabel="Max 10 characters" appearance="fill" style="padding-right: 20px;">
+            <mat-label>house number</mat-label>
+            <input matInput #input maxlength="10" placeholder="house_number">
+            <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint>
+          </mat-form-field>
+        
+          <mat-form-field hintLabel="Max 10 characters" appearance="fill" style="padding-right: 20px;">
+            <mat-label>Postal Code</mat-label>
+            <input matInput formControlName="postal_code" maxlength="10" placeholder="Postal Code">
+            <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint>
+          </mat-form-field>
+          
+        </div>        
+     </div>
     </mat-card>
 
     <!-- Right block -->
     <mat-card>
       <div class="controlers-wrapper">
         <!-- Add subjects -->
-        <mat-form-field class="multiple-items">
-          <mat-chip-list #chipList>
-            <mat-chip *ngFor="let subjectArray of subjectArray" [selectable]="selectable" [removable]="removable"
-              (removed)="remove(subjectArray)">
-              {{subjectArray.name}}
-              <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-            </mat-chip>
-            <input placeholder="Add subject" [matChipInputFor]="chipList"
-              [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
-              (matChipInputTokenEnd)="add($event)">
-          </mat-chip-list>
-          <i class="material-icons tooltip-info" matTooltip="Enter subject name and press enter to add subjects">
-            info
-          </i>
-        </mat-form-field>
+        <div class="example-container">
+          <mat-form-field hintLabel="Max 10 characters" appearance="fill" style="padding-right: 20px;">
+            <mat-label>order number</mat-label>
+            <input matInput formControlName="order_number" maxlength="10" placeholder="order number">
+            <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint>
+          </mat-form-field>
+        
+          <mat-form-field appearance="fill">
+            <mat-label>order amount</mat-label>
+            <mat-select formControlName="order_amount">
+              <mat-option value="option1">1</mat-option>
+              <mat-option value="option2">2</mat-option>
+              <mat-option value="option3">3</mat-option>
+              <mat-option value="option4">4</mat-option>
+            </mat-select>
+            <mat-hint align="end">Here's the dropdown arrow ^</mat-hint>
+          </mat-form-field>
+        </div>
+        
 
         <!-- Date of birth -->
         <mat-form-field>
@@ -86,7 +96,7 @@
     <mat-card>
       <div class="full-wrapper button-wrapper">
         <div class="button-wrapper">
-          <button mat-flat-button color="warn">Update</button>
+          <button mat-flat-button color="warn">Submit</button>
         </div>
       </div>
     </mat-card>

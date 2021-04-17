@@ -14,7 +14,7 @@ export class CustomersListComponent implements OnInit {
   StudentData: any = [];
   dataSource: MatTableDataSource<Customer>;
   @ViewChild(MatPaginator) paginator: MatPaginator;
-  displayedColumns: string[] = ['_id', 'student_name', 'student_email', 'section', 'action'];
+  displayedColumns: string[] = ['_id', 'customer_name', 'customer_address', 'order_number', 'gender'];
 
   constructor(private studentApi: ApiService) {
     this.studentApi.GetStudents().subscribe(data => {
@@ -28,7 +28,7 @@ export class CustomersListComponent implements OnInit {
 
   ngOnInit() { }
 
-  deleteStudent(index: number, e){
+  deleteCustomer(index: number, e){
     if(window.confirm('Are you sure')) {
       const data = this.dataSource.data;
       data.splice((this.paginator.pageIndex * this.paginator.pageSize) + index, 1);

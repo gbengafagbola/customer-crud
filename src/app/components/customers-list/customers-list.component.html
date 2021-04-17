@@ -10,31 +10,26 @@
   <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource">
       <ng-container matColumnDef="_id">
-        <th mat-header-cell *matHeaderCellDef> Student ID </th>
+        <th mat-header-cell *matHeaderCellDef> Customer ID </th>
         <td mat-cell *matCellDef="let element"> {{element._id}} </td>
       </ng-container>
 
       <ng-container matColumnDef="student_name">
-        <th mat-header-cell *matHeaderCellDef> Student Name </th>
-        <td mat-cell *matCellDef="let element"> {{element.student_name}} </td>
+        <th mat-header-cell *matHeaderCellDef> Customer Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.customer_name}} </td>
       </ng-container>
 
       <ng-container matColumnDef="student_email">
         <th mat-header-cell *matHeaderCellDef> Email </th>
-        <td mat-cell *matCellDef="let element"> {{element.student_email}} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="section">
-        <th mat-header-cell *matHeaderCellDef> Section </th>
-        <td mat-cell *matCellDef="let element"> {{element.section}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.customer_address}} </td>
       </ng-container>
 
       <ng-container matColumnDef="action">
         <th mat-header-cell *matHeaderCellDef> Action </th>
         <td mat-cell *matCellDef="let element; let i = index;">
           <button mat-raised-button color="primary" class="push-right"
-            [routerLink]="['/edit-student/', element._id]">Edit</button>
-          <button mat-raised-button color="accent" (click)="deleteStudent(i, element)">Delete</button>
+            [routerLink]="['/edit-customer/', element._id]">Edit</button>
+          <button mat-raised-button color="accent" (click)="deleteCustomer(i, element)">Delete</button>
         </td>
       </ng-container>
 
