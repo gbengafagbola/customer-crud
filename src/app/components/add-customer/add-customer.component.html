@@ -1,3 +1,4 @@
+  
 <!-- Title group  -->
 <div class="title-group">
   <h1 class="mat-h1">Add Customer</h1>
@@ -14,7 +15,7 @@
         <mat-form-field class="example-full-width">
           <input matInput placeholder="Customer name" formControlName="student_name">
           <mat-error *ngIf="handleError('student_name', 'required')">
-            You must provide a<strong>customer name</strong>
+            You must provide a<strong>Customer name</strong>
           </mat-error>
         </mat-form-field>
 
@@ -22,20 +23,17 @@
         <mat-form-field class="example-full-width">
           <input matInput placeholder="Customer email" formControlName="student_email">
           <mat-error *ngIf="handleError('student_email', 'required')">
-            You must provide a<strong>customer email</strong>
+            You must provide a<strong>Customer email</strong>
           </mat-error>
         </mat-form-field>
 
         <!-- Section -->
         <mat-form-field>
           <mat-label>Section</mat-label>
-          <!-- <mat-select [(value)]="selected" formControlName="section">
-            <mat-option [value]="sectioinArray" *ngFor="let sectioinArray of SectioinArray">{{sectioinArray}}
+          <mat-select formControlName="section">
+            <mat-option>
             </mat-option>
-          </mat-select> -->
-          <mat-error *ngIf="handleError('section', 'required')">
-            Section is required
-          </mat-error>
+          </mat-select>
         </mat-form-field>
       </div>
     </mat-card>
